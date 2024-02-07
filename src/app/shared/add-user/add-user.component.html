@@ -1,0 +1,26 @@
+<form>
+    <div>
+      <label for="uuid">UUID:</label>
+      <input type="text" id="uuid" name="uuid" [(ngModel)]="user.uuid">
+    </div>
+    <div>
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" [(ngModel)]="user.firstname">
+    </div>
+    <div>
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" [(ngModel)]="user.lastname">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password">
+    </div>
+    <div>
+      <label for="role">Role:</label>
+      <select id="role" name="role" [(ngModel)]="user.role">
+        <option *ngFor="let role of roles" [ngValue]="role">{{ role }}</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  

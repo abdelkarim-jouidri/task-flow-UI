@@ -1,24 +1,35 @@
-<!-- users.component.html -->
+<!-- users.component.html
+
+<button routerLink="/add-user">Add User</button>
 
 <div>
     <h2>Users</h2>
     <table class="user-table">
+
+
+
       <thead>
         <tr>
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
-          <!-- Add more columns as needed -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <!-- Add more columns as needed -->
-        </tr>
+        <div *ngIf="users$ | async as users">
+          <tr *ngFor="let user of users">
+            <td>{{ user.uuid }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+          </tr>
+        </div>
+       
       </tbody>
     </table>
   </div>
-  
+   -->
+
+   <div *ngFor="let user of users$ | async">
+      {{user.firstname}}
+
+   </div>
