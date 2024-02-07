@@ -9,6 +9,9 @@ import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { HomeComponent } from './shared/home/home.component';
 import { UsersComponent } from './shared/users/users.component';
 import { TasksComponent } from './shared/tasks/tasks.component';
+import { StoreModule } from '@ngrx/store';
+import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { TasksComponent } from './shared/tasks/tasks.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    UserModule,
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule
   ],

@@ -1,6 +1,10 @@
 <!-- users.component.html -->
 
+<div *ngIf="isLoading$ | async">
+  Loading ...
+</div>
 <div>
+
     <h2>Users</h2>
     <table class="user-table">
       <thead>

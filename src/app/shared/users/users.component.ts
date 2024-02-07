@@ -1,6 +1,12 @@
 // users.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import * as UserActions from '../../user/store/actions/user.actions'
+import { Observable } from 'rxjs';
+import { isLoadingSelector, usersSelector } from '../../user/store/selectors/user.selectors';
+import { AppState } from '../../user/types/appState.interface';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-users',
@@ -15,9 +21,18 @@ export class UsersComponent implements OnInit {
     // Add more users as needed
   ];
 
-  constructor() { }
+  users$ : Observable<User[]>;
+
+  isLoading$ : Observable<boolean>;
+
+  constructor(private store: Store<AppState>) {
+   this.users$ = this.store.pipe(select(usersSelector))
+   this.isLoading$ =  this.store.pipe(select(isLoadingSelector))
+   this.users$.subscribe(res=>console.log(res))
+  }
 
   ngOnInit(): void {
+    this.store.dispatch(UserActions.getUsers())
   }
 
 }
