@@ -3,6 +3,9 @@
 <div *ngIf="isLoading$ | async">
   Loading ...
 </div>
+<div *ngIf="error$ | async as error">
+  {{error}}
+</div>
 <div>
 
     <h2>Users</h2>
@@ -10,17 +13,15 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <!-- Add more columns as needed -->
+          <th>firstName</th>
+          <th>lastName</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users$ | async">
           <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <!-- Add more columns as needed -->
+          <td>{{ user.fistName }}</td>
+          <td>{{ user.lastName }}</td>
         </tr>
       </tbody>
     </table>

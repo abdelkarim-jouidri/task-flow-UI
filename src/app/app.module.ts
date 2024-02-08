@@ -12,6 +12,7 @@ import { TasksComponent } from './shared/tasks/tasks.component';
 import { StoreModule } from '@ngrx/store';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     UserModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule
   ],

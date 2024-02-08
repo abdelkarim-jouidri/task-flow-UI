@@ -1,7 +1,7 @@
 export interface User {
-    uuid : string,
-    firstname : string,
-    lastname : string,
+    id : string,
+    fistName : string,
+    lastName : string,
     password : string
     role : Role
 }

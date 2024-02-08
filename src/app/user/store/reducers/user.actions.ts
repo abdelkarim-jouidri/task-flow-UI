@@ -9,6 +9,25 @@ export const initialState : UserState = {
 
 export const reducers = createReducer(
   initialState,
+  // on(UserActions.getUsers, (state)=> ({...state, isLoading : true})),
+  // on(UserActions.getUsersFailure, (state, {error})=>({...state, error : error, isLoading : false }))
   on(UserActions.getUsers, (state)=> ({...state, isLoading : true})),
-  on(UserActions.getUsersFailure, (state, action)=>({...state, isLoading : false, users : action.users}))
+  on(UserActions.getUsersSuccess, (state, { users }) => ({
+    ...state,
+    users: users,
+    isLoading: false,
+    error: null
+  })),
+  on(UserActions.getUsers, (state)=> ({...state, isLoading : true})),
+  on(UserActions.getUsersSuccess, (state, { users }) => ({
+    ...state,
+    users: users,
+    isloading: false,
+    error: null
+  })),
+  on(UserActions.getUsersFailure, (state, {error})=> ({
+    ...state,
+    isLoading : false,
+    error : error
+  }))
   )
